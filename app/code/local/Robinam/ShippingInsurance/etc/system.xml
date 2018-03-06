@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<config>
+<sections>
+    <carriers module="shipping" translate="label">
+        <label>Shipping Methods</label>
+        <tab>sales</tab> <!-- В какой вкладке вывести наши настройки -->
+        <frontend>text</frontend>
+        <sort_order>320</sort_order>
+        <show_in_default>1</show_in_default>
+        <show_in_website>1</show_in_website>
+        <show_in_store>1</show_in_store>
+        <groups>
+            <flatrate translate="label">
+                <label>Flat Rate</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>2</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                    <inshurance_enabled module="shipping" translate="label">
+                        <label>Enabled insurance</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>20</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <comment>Is module enabled</comment>
+                    </inshurance_enabled>
+                    <inshurance_type module="shipping" translate="label">
+                        <label>Type of insurance rate</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>shippinginsurance/source_mycustom</source_model>
+                        <sort_order>21</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <depends><inshurance_enabled>1</inshurance_enabled></depends>
+                    </inshurance_type>
+                    <inshurance_rate>
+                        <label>Rate of insurance</label>
+                        <frontend_type>text</frontend_type>
+                        <validate>validate-number validate-zero-or-greater</validate>
+                        <sort_order>22</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <depends><inshurance_enabled>1</inshurance_enabled></depends>
+                    </inshurance_rate>
+                </fields>
+            </flatrate>
+
+        </groups>
+    </carriers>
+</sections>
+</config>
