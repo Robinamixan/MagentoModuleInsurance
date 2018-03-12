@@ -4,6 +4,9 @@
         <Robinam_ShippingInsurance>
             <active>true</active>
             <codePool>local</codePool>
+            <depends>
+                <Mage_Checkout /><!--Add this depend module and that will your layout after checkout.xml-->
+            </depends>
         </Robinam_ShippingInsurance>
     </modules>
 </config>
