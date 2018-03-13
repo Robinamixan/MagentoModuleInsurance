@@ -10,10 +10,10 @@
         <show_in_website>1</show_in_website>
         <show_in_store>0</show_in_store>
         <groups>
-            <flatinsurance>
+            <flatrate_insurance>
                 <label>Flat Insurance</label>
                 <frontend_type>text</frontend_type>
-                <sort_order>1</sort_order>
+                <sort_order>10</sort_order>
                 <show_in_default>1</show_in_default>
                 <show_in_website>1</show_in_website>
                 <show_in_store>1</show_in_store>
@@ -49,12 +49,12 @@
                         <depends><inshurance_enabled>1</inshurance_enabled></depends>
                     </inshurance_rate>
                 </fields>
-            </flatinsurance>
-            <freeshippinginsurance>
+            </flatrate_insurance>
+            <freeshipping_insurance>
                 <label>Free shipping Insurance</label>
                 <frontend_type>text</frontend_type>
                 <sort_order>20</sort_order>
-                <show_in_default>1</show_in_default>
+                <show_in_default>2</show_in_default>
                 <show_in_website>1</show_in_website>
                 <show_in_store>1</show_in_store>
                 <fields>
@@ -89,8 +89,8 @@
                         <depends><inshurance_enabled>1</inshurance_enabled></depends>
                     </inshurance_rate>
                 </fields>
-            </freeshippinginsurance>
-            <tableinsurance>
+            </freeshipping_insurance>
+            <tablerate_insurance>
                 <label>Table Insurance</label>
                 <frontend_type>text</frontend_type>
                 <sort_order>30</sort_order>
@@ -129,8 +129,8 @@
                         <depends><inshurance_enabled>1</inshurance_enabled></depends>
                     </inshurance_rate>
                 </fields>
-            </tableinsurance>
-            <upsinsurance>
+            </tablerate_insurance>
+            <ups_insurance>
                 <label>UPS Insurance</label>
                 <frontend_type>text</frontend_type>
                 <sort_order>40</sort_order>
@@ -169,8 +169,8 @@
                         <depends><inshurance_enabled>1</inshurance_enabled></depends>
                     </inshurance_rate>
                 </fields>
-            </upsinsurance>
-            <uspsinsurance>
+            </ups_insurance>
+            <usps_insurance>
                 <label>USPS Insurance</label>
                 <frontend_type>text</frontend_type>
                 <sort_order>50</sort_order>
@@ -209,12 +209,12 @@
                         <depends><inshurance_enabled>1</inshurance_enabled></depends>
                     </inshurance_rate>
                 </fields>
-            </uspsinsurance>
-            <fedexinsurance>
+            </usps_insurance>
+            <fedex_insurance>
                 <label>FedEx Insurance</label>
                 <frontend_type>text</frontend_type>
-                <sort_order>1</sort_order>
-                <show_in_default>60</show_in_default>
+                <sort_order>60</sort_order>
+                <show_in_default>1</show_in_default>
                 <show_in_website>1</show_in_website>
                 <show_in_store>1</show_in_store>
                 <fields>
@@ -249,12 +249,12 @@
                         <depends><inshurance_enabled>1</inshurance_enabled></depends>
                     </inshurance_rate>
                 </fields>
-            </fedexinsurance>
-            <dhldeprecatedinsurance>
+            </fedex_insurance>
+            <dhlint_insurance>
                 <label>DHL (deprecated) Insurance</label>
                 <frontend_type>text</frontend_type>
-                <sort_order>1</sort_order>
-                <show_in_default>60</show_in_default>
+                <sort_order>70</sort_order>
+                <show_in_default>1</show_in_default>
                 <show_in_website>1</show_in_website>
                 <show_in_store>1</show_in_store>
                 <fields>
@@ -289,12 +289,12 @@
                         <depends><inshurance_enabled>1</inshurance_enabled></depends>
                     </inshurance_rate>
                 </fields>
-            </dhldeprecatedinsurance>
-            <dhlinsurance>
+            </dhlint_insurance>
+            <dhl_insurance>
                 <label>DHL Insurance</label>
                 <frontend_type>text</frontend_type>
-                <sort_order>1</sort_order>
-                <show_in_default>60</show_in_default>
+                <sort_order>80</sort_order>
+                <show_in_default>1</show_in_default>
                 <show_in_website>1</show_in_website>
                 <show_in_store>1</show_in_store>
                 <fields>
@@ -329,7 +329,7 @@
                         <depends><inshurance_enabled>1</inshurance_enabled></depends>
                     </inshurance_rate>
                 </fields>
-            </dhlinsurance>
+            </dhl_insurance>
         </groups>
     </shippinginsurance>
 </sections>

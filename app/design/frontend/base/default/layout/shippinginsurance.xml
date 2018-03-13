@@ -1,15 +1,8 @@
 <?xml version="1.0"?>
 <layout version="1.0.0">
-    <shippinginsurance_index_index>
-        <reference name="content">
-            <block type="shippinginsurance/list" name="shippinginsurance.list" template="shippinginsurance/list.phtml"/>
-        </reference>
-    </shippinginsurance_index_index>
-
-
     <checkout_onepage_index translate="label">
         <reference name="checkout.onepage.shipping_method">
-            <block type="shippinginsurance/list" name="shippinginsurance.list" template="shippinginsurance/list.phtml"/>
+            <!--<block type="shippinginsurance/list" name="list" template="shippinginsurance/list.phtml"/>-->
             <block type="shippinginsurance/list" name="shippinginsurance.list" template="shippinginsurance/list.phtml">
                 <action method="setChild">
                     <name>additional</name>
@@ -24,4 +17,8 @@
             </action>
         </reference>
     </checkout_onepage_index>
+
+
 </layout>
+
+
