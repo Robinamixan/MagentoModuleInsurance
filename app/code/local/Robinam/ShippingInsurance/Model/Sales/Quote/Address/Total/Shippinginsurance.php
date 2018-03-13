@@ -1,7 +1,8 @@
 <?php
+
 class Robinam_ShippingInsurance_Model_Sales_Quote_Address_Total_Shippinginsurance extends Mage_Sales_Model_Quote_Address_Total_Abstract
 {
-    protected $_code = 'fee';
+    protected $_code = 'shippinginsurance';
 
     public function collect(Mage_Sales_Model_Quote_Address $address)
     {
@@ -15,10 +16,9 @@ class Robinam_ShippingInsurance_Model_Sales_Quote_Address_Total_Shippinginsuranc
             return $this; //this makes only address type shipping to come through
         }
 
-
         $quote = $address->getQuote();
 
-        if(Robinam_ShippingInsurance_Model_ShippingInsurance::canApply($address)){ //your business logic
+        if (Robinam_ShippingInsurance_Model_ShippingInsurance::canApply($address)) { //your business logic
             $exist_amount = $quote->getShippinginsuranceAmount();
             $fee = Robinam_ShippingInsurance_Model_ShippingInsurance::getShippinginsurance($address);
             $balance = $fee - $exist_amount;
@@ -30,17 +30,17 @@ class Robinam_ShippingInsurance_Model_Sales_Quote_Address_Total_Shippinginsuranc
             $address->setGrandTotal($address->getGrandTotal() + $address->getShippinginsuranceAmount());
             $address->setBaseGrandTotal($address->getBaseGrandTotal() + $address->getBaseShippinginsuranceAmount());
         }
-
     }
 
     public function fetch(Mage_Sales_Model_Quote_Address $address)
     {
         $amt = $address->getShippinginsuranceAmount();
         $address->addTotal(array(
-            'code'=>$this->getCode(),
-            'title'=>Mage::helper('shippinginsurance')->__('Shipping Insurance'),
-            'value'=> $amt
+            'code' => $this->getCode(),
+            'title' => Mage::helper('shippinginsurance')->__('Shipping Insurance'),
+            'value' => $amt,
         ));
+
         return $this;
     }
 }

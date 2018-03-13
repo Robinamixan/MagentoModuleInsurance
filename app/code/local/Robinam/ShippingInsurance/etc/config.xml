@@ -67,23 +67,16 @@
         </events>
 
     </global>
+
     <frontend>
         <layout>
             <updates>
-                <shippinginsurance module="shippinginsurance">
+                <shippinginsurance>
                     <file>shippinginsurance.xml</file>
                 </shippinginsurance>
             </updates>
         </layout>
-        <routers>
-            <shippinginsurance>
-                <use>standard</use>
-                <args>
-                    <module>Robinam_ShippingInsurance</module>
-                    <frontName>shippinginsurance</frontName>
-                </args>
-            </shippinginsurance>
-        </routers>
+
         <translate>
             <modules>
                 <Robinam_ShippingInsurance>
@@ -94,27 +87,24 @@
             </modules>
         </translate>
     </frontend>
+
     <admin>
-        <routers>
-            <adminhtml>
-                <args>
-                    <modules>
-                        <shippinginsurance before="Mage_Adminhtml">Robinam_ShippingInsurance_Adminhtml</shippinginsurance>
-                    </modules>
-                </args>
-            </adminhtml>
-        </routers>
+
     </admin>
+
     <default>
 
-        <carriers>
-            <flatrate>
-                <inshurance_enabled>0</inshurance_enabled>
-            </flatrate>
-        </carriers>
-
     </default>
+
     <adminhtml>
+
+        <layout>
+            <updates>
+                <fee>
+                    <file>shippinginsurance.xml</file>
+                </fee>
+            </updates>
+        </layout>
 
         <acl>
             <resources>

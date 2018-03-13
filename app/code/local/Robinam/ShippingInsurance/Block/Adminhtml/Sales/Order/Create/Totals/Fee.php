@@ -1,0 +1,6 @@
+<?php
+
+class Robinam_ShippingInsurance_Block_Adminhtml_Sales_Order_Create_Totals_Fee extends Mage_Adminhtml_Block_Sales_Order_Create_Totals_Default
+{
+
+}
