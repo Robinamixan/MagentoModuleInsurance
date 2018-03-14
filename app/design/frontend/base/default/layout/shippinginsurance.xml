@@ -2,18 +2,7 @@
 <layout version="1.0.0">
     <checkout_onepage_index translate="label">
         <reference name="checkout.onepage.shipping_method">
-            <!--<block type="shippinginsurance/list" name="list" template="shippinginsurance/list.phtml"/>-->
-            <block type="shippinginsurance/list" name="shippinginsurance.list" template="shippinginsurance/list.phtml">
-                <action method="setChild">
-                    <name>additional</name>
-                    <block>additional</block>
-                </action>
-            </block>
-
-            <action method="setChild">
-                <name>additional</name>
-                <block>shippinginsurance.list</block>
-            </action>
+            <block type="shippinginsurance/list" name="list" template="shippinginsurance/list.phtml"/>
         </reference>
     </checkout_onepage_index>
 
