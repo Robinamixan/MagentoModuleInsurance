@@ -8,6 +8,8 @@ class Robinam_ShippingInsurance_Model_Sales_Quote_Address_Total_Shippinginsuranc
     {
         parent::collect($address);
 
+        $insuranceModel = Mage::getModel('shippinginsurance/insurance');
+
         $this->_setAmount(0);
         $this->_setBaseAmount(0);
 
@@ -18,10 +20,10 @@ class Robinam_ShippingInsurance_Model_Sales_Quote_Address_Total_Shippinginsuranc
 
         $quote = $address->getQuote();
 
-        if (Robinam_ShippingInsurance_Model_ShippingInsurance::canApply($address)) { //your business logic
+        if ($insuranceModel->canChangeInsuranceAmount($address)) {
             $exist_amount = $quote->getShippinginsuranceAmount();
-            $fee = Robinam_ShippingInsurance_Model_ShippingInsurance::getShippinginsurance($address);
-            $balance = $fee - $exist_amount;
+            $insuranceRate = $insuranceModel->getInsuranceRate($address);
+            $balance = $insuranceRate - $exist_amount;
             $address->setShippinginsuranceAmount($balance);
             $address->setBaseShippinginsuranceAmount($balance);
 

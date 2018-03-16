@@ -29,7 +29,7 @@ class Robinam_ShippingInsurance_Block_Sales_Order_Insurance extends Mage_Core_Bl
      */
     public function initTotals()
     {
-        if ((float)$this->getOrder()->getBaseShippinginsuranceAmount()) {
+        if ((float) $this->getOrder()->getBaseShippinginsuranceAmount()) {
             $source = $this->getSource();
             $value = $source->getShippinginsuranceAmount();
 

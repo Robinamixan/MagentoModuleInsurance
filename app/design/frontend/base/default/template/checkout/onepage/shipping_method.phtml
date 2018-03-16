@@ -33,11 +33,9 @@
         var shippingMethod = new ShippingMethod('co-shipping-method-form', "<?php echo $this->getUrl('checkout/onepage/saveShippingMethod') ?>");
     //]]>
     </script>
-
     <div id="onepage-checkout-shipping-method-insurance">
-        <?php echo $this->getChildHtml('list') ?>
+        <?php echo $this->getChildHtml('checkboxInsurance') ?>
     </div>
-
     <div id="onepage-checkout-shipping-method-additional-load">
         <?php echo $this->getChildHtml('additional') ?>
     </div>

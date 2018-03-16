@@ -23,4 +23,16 @@
             <block type="adminhtml/sales_order_totals_item" name="shippinginsurance" template="shippinginsurance/sales/order/total.phtml" />
         </reference>
     </adminhtml_sales_order_invoice_view>
+
+    <adminhtml_sales_order_creditmemo_new>
+        <reference name="creditmemo_totals">
+            <block type="adminhtml/sales_order_totals_item" name="shippinginsurance" template="shippinginsurance/sales/order/total.phtml" />
+        </reference>
+    </adminhtml_sales_order_creditmemo_new>
+
+    <adminhtml_sales_order_creditmemo_updateqty>
+        <reference name="creditmemo_totals">
+            <block type="adminhtml/sales_order_totals_item" name="shippinginsurance" template="shippinginsurance/sales/order/total.phtml" />
+        </reference>
+    </adminhtml_sales_order_creditmemo_updateqty>
 </layout>
