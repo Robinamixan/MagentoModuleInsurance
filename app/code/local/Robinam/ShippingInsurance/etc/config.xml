@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Robinam_ShippingInsurance>
+            <version>1.0.0</version>
+        </Robinam_ShippingInsurance>
+    </modules>
+    <global>
+
+        <blocks>
+            <shippinginsurance>
+                <class>Robinam_ShippingInsurance_Block</class>
+            </shippinginsurance>
+        </blocks>
+
+        <helpers>
+            <shippinginsurance>
+                <class>Robinam_ShippingInsurance_Helper</class>
+            </shippinginsurance>
+        </helpers>
+
+        <sales>
+            <quote>
+                <totals>
+                    <shippinginsurance>
+                        <class>shippinginsurance/sales_quote_address_total_shippinginsurance</class>
+                    </shippinginsurance>
+                </totals>
+            </quote>
+        </sales>
+
+        <fieldsets>
+            <sales_convert_quote_address>
+                <shippinginsurance_amount>
+                    <to_order>*</to_order>
+                </shippinginsurance_amount>
+                <base_shippinginsurance_amount>
+                    <to_order>*</to_order>
+                </base_shippinginsurance_amount>
+            </sales_convert_quote_address>
+        </fieldsets>
+
+        <resources>
+            <shippinginsurance_setup>
+                <setup>
+                    <module>Robinam_ShippingInsurance</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </shippinginsurance_setup>
+        </resources>
+        <models>
+            <shippinginsurance>
+                <class>Robinam_ShippingInsurance_Model</class>
+            </shippinginsurance>
+        </models>
+
+        <events>
+            <controller_action_predispatch_checkout_onepage_saveShippingMethod><!-- observe the event -->
+                <observers>
+                    <shippinginsurance>
+                        <class>shippinginsurance/observer</class>
+                        <method>autoMetaDescription</method>
+                    </shippinginsurance>
+                </observers>
+            </controller_action_predispatch_checkout_onepage_saveShippingMethod>
+        </events>
+
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <shippinginsurance>
+                    <file>shippinginsurance.xml</file>
+                </shippinginsurance>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <Robinam_ShippingInsurance>
+                    <files>
+                        <default>Robinam_ShippingInsurance.csv</default>
+                    </files>
+                </Robinam_ShippingInsurance>
+            </modules>
+        </translate>
+    </frontend>
+
+    <admin>
+    </admin>
+
+    <default>
+    </default>
+
+    <adminhtml>
+
+        <layout>
+            <updates>
+                <fee>
+                    <file>shippinginsurance.xml</file>
+                </fee>
+            </updates>
+        </layout>
+
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <shippinginsurance>
+                                            <title>Shippinginsurance - All</title>
+                                        </shippinginsurance>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

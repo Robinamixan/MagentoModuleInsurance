@@ -1,0 +1,336 @@
+<?xml version="1.0"?>
+<config>
+<sections>
+    <shippinginsurance translate="label" module="shipping">
+        <label>Shipping Insurance</label>
+        <tab>sales</tab>
+        <frontend_type>text</frontend_type>
+        <sort_order>330</sort_order>
+        <show_in_default>10</show_in_default>
+        <show_in_website>1</show_in_website>
+        <show_in_store>0</show_in_store>
+        <groups>
+            <flatrate_insurance>
+                <label>Flat Insurance</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>10</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                    <inshurance_enabled module="shipping" translate="label">
+                        <label>Enabled insurance</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>20</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <comment>Is module enabled</comment>
+                    </inshurance_enabled>
+                    <inshurance_type module="shipping" translate="label">
+                        <label>Type of insurance rate</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>shippinginsurance/source_insuranceRateTypes</source_model>
+                        <sort_order>21</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <depends><inshurance_enabled>1</inshurance_enabled></depends>
+                    </inshurance_type>
+                    <inshurance_rate>
+                        <label>Rate of insurance</label>
+                        <frontend_type>text</frontend_type>
+                        <validate>validate-number validate-zero-or-greater</validate>
+                        <sort_order>22</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <depends><inshurance_enabled>1</inshurance_enabled></depends>
+                    </inshurance_rate>
+                </fields>
+            </flatrate_insurance>
+            <freeshipping_insurance>
+                <label>Free shipping Insurance</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>20</sort_order>
+                <show_in_default>2</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                    <inshurance_enabled module="shipping" translate="label">
+                        <label>Enabled insurance</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>20</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <comment>Is module enabled</comment>
+                    </inshurance_enabled>
+                    <inshurance_type module="shipping" translate="label">
+                        <label>Type of insurance rate</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>shippinginsurance/source_insuranceRateTypes</source_model>
+                        <sort_order>21</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <depends><inshurance_enabled>1</inshurance_enabled></depends>
+                    </inshurance_type>
+                    <inshurance_rate>
+                        <label>Rate of insurance</label>
+                        <frontend_type>text</frontend_type>
+                        <validate>validate-number validate-zero-or-greater</validate>
+                        <sort_order>22</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <depends><inshurance_enabled>1</inshurance_enabled></depends>
+                    </inshurance_rate>
+                </fields>
+            </freeshipping_insurance>
+            <tablerate_insurance>
+                <label>Table Insurance</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>30</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                    <inshurance_enabled module="shipping" translate="label">
+                        <label>Enabled insurance</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>20</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <comment>Is module enabled</comment>
+                    </inshurance_enabled>
+                    <inshurance_type module="shipping" translate="label">
+                        <label>Type of insurance rate</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>shippinginsurance/source_insuranceRateTypes</source_model>
+                        <sort_order>21</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <depends><inshurance_enabled>1</inshurance_enabled></depends>
+                    </inshurance_type>
+                    <inshurance_rate>
+                        <label>Rate of insurance</label>
+                        <frontend_type>text</frontend_type>
+                        <validate>validate-number validate-zero-or-greater</validate>
+                        <sort_order>22</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <depends><inshurance_enabled>1</inshurance_enabled></depends>
+                    </inshurance_rate>
+                </fields>
+            </tablerate_insurance>
+            <ups_insurance>
+                <label>UPS Insurance</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>40</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                    <inshurance_enabled module="shipping" translate="label">
+                        <label>Enabled insurance</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>20</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <comment>Is module enabled</comment>
+                    </inshurance_enabled>
+                    <inshurance_type module="shipping" translate="label">
+                        <label>Type of insurance rate</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>shippinginsurance/source_insuranceRateTypes</source_model>
+                        <sort_order>21</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <depends><inshurance_enabled>1</inshurance_enabled></depends>
+                    </inshurance_type>
+                    <inshurance_rate>
+                        <label>Rate of insurance</label>
+                        <frontend_type>text</frontend_type>
+                        <validate>validate-number validate-zero-or-greater</validate>
+                        <sort_order>22</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <depends><inshurance_enabled>1</inshurance_enabled></depends>
+                    </inshurance_rate>
+                </fields>
+            </ups_insurance>
+            <usps_insurance>
+                <label>USPS Insurance</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>50</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                    <inshurance_enabled module="shipping" translate="label">
+                        <label>Enabled insurance</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>20</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <comment>Is module enabled</comment>
+                    </inshurance_enabled>
+                    <inshurance_type module="shipping" translate="label">
+                        <label>Type of insurance rate</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>shippinginsurance/source_insuranceRateTypes</source_model>
+                        <sort_order>21</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <depends><inshurance_enabled>1</inshurance_enabled></depends>
+                    </inshurance_type>
+                    <inshurance_rate>
+                        <label>Rate of insurance</label>
+                        <frontend_type>text</frontend_type>
+                        <validate>validate-number validate-zero-or-greater</validate>
+                        <sort_order>22</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <depends><inshurance_enabled>1</inshurance_enabled></depends>
+                    </inshurance_rate>
+                </fields>
+            </usps_insurance>
+            <fedex_insurance>
+                <label>FedEx Insurance</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>60</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                    <inshurance_enabled module="shipping" translate="label">
+                        <label>Enabled insurance</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>20</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <comment>Is module enabled</comment>
+                    </inshurance_enabled>
+                    <inshurance_type module="shipping" translate="label">
+                        <label>Type of insurance rate</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>shippinginsurance/source_insuranceRateTypes</source_model>
+                        <sort_order>21</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <depends><inshurance_enabled>1</inshurance_enabled></depends>
+                    </inshurance_type>
+                    <inshurance_rate>
+                        <label>Rate of insurance</label>
+                        <frontend_type>text</frontend_type>
+                        <validate>validate-number validate-zero-or-greater</validate>
+                        <sort_order>22</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <depends><inshurance_enabled>1</inshurance_enabled></depends>
+                    </inshurance_rate>
+                </fields>
+            </fedex_insurance>
+            <dhlint_insurance>
+                <label>DHL (deprecated) Insurance</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>70</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                    <inshurance_enabled module="shipping" translate="label">
+                        <label>Enabled insurance</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>20</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <comment>Is module enabled</comment>
+                    </inshurance_enabled>
+                    <inshurance_type module="shipping" translate="label">
+                        <label>Type of insurance rate</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>shippinginsurance/source_insuranceRateTypes</source_model>
+                        <sort_order>21</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <depends><inshurance_enabled>1</inshurance_enabled></depends>
+                    </inshurance_type>
+                    <inshurance_rate>
+                        <label>Rate of insurance</label>
+                        <frontend_type>text</frontend_type>
+                        <validate>validate-number validate-zero-or-greater</validate>
+                        <sort_order>22</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <depends><inshurance_enabled>1</inshurance_enabled></depends>
+                    </inshurance_rate>
+                </fields>
+            </dhlint_insurance>
+            <dhl_insurance>
+                <label>DHL Insurance</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>80</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                    <inshurance_enabled module="shipping" translate="label">
+                        <label>Enabled insurance</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>20</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <comment>Is module enabled</comment>
+                    </inshurance_enabled>
+                    <inshurance_type module="shipping" translate="label">
+                        <label>Type of insurance rate</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>shippinginsurance/source_insuranceRateTypes</source_model>
+                        <sort_order>21</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <depends><inshurance_enabled>1</inshurance_enabled></depends>
+                    </inshurance_type>
+                    <inshurance_rate>
+                        <label>Rate of insurance</label>
+                        <frontend_type>text</frontend_type>
+                        <validate>validate-number validate-zero-or-greater</validate>
+                        <sort_order>22</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_Website>1</show_in_Website>
+                        <show_in_store>1</show_in_store>
+                        <depends><inshurance_enabled>1</inshurance_enabled></depends>
+                    </inshurance_rate>
+                </fields>
+            </dhl_insurance>
+        </groups>
+    </shippinginsurance>
+</sections>
+</config>
