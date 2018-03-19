@@ -1,6 +1,6 @@
 <?php
 
-class Robinam_ShippingInsurance_Model_Insurance
+class Robinam_ShippingInsurance_Model_ShippingInsurance
 {
     const FIXED = 1;
     const PERCENT = 2;
@@ -14,22 +14,41 @@ class Robinam_ShippingInsurance_Model_Insurance
      */
     public function getInsuranceRate(Mage_Sales_Model_Quote_Address $address)
     {
-        $shippingMethod = $address->getShippingMethod();
         $shippingRate = $address->getQuote()->getTotals()['subtotal']->getValue();
 
-        $shippingMethodCode = explode('_', $shippingMethod);
-        $shippingMethodsConfigPath = 'shippinginsurance/' . $shippingMethodCode[0] . '_insurance/';
+        $shippingMethodsConfigPath = $shippingMethodsConfigPath = $this->getInsuranceConfigPath($address);
 
         $insuranceRateTypeConfig = Mage::getStoreConfig($shippingMethodsConfigPath . 'inshurance_type');
         $insuranceRateValueConfig = Mage::getStoreConfig($shippingMethodsConfigPath . 'inshurance_rate');
 
-        if ($insuranceRateTypeConfig === (string) self::FIXED) {
+        if ($insuranceRateTypeConfig === (string)self::FIXED) {
             $insurancePrice = $insuranceRateValueConfig;
         } else {
-            $insurancePrice = $shippingRate * ((float) $insuranceRateValueConfig / 100);
+            $insurancePrice = $shippingRate * ((float)$insuranceRateValueConfig / 100);
         }
 
         return $insurancePrice;
+    }
+
+    /**
+     * @param Mage_Sales_Model_Quote_Address $address
+     * @return mixed
+     */
+    public function getInsuranceType(Mage_Sales_Model_Quote_Address $address)
+    {
+        $shippingMethodsConfigPath = $this->getInsuranceConfigPath($address);
+        return Mage::getStoreConfig($shippingMethodsConfigPath . 'inshurance_type');
+    }
+
+    /**
+     * @param Mage_Sales_Model_Quote_Address $address
+     * @return string
+     */
+    public function getInsuranceConfigPath(Mage_Sales_Model_Quote_Address $address)
+    {
+        $shippingMethod = $address->getShippingMethod();
+        $shippingMethodCode = explode('_', $shippingMethod);
+        return 'shippinginsurance/' . $shippingMethodCode[0] . '_insurance/';
     }
 
     /**
@@ -45,9 +64,7 @@ class Robinam_ShippingInsurance_Model_Insurance
             return false;
         }
 
-        $shippingMethod = $address->getShippingMethod();
-        $shippingMethodCode = explode('_', $shippingMethod);
-        $shippingMethodsConfigPath = 'shippinginsurance/'.$shippingMethodCode[0].'_insurance/';
+        $shippingMethodsConfigPath = $this->getInsuranceConfigPath($address);
         $insuranceConfigFlag = Mage::getStoreConfigFlag($shippingMethodsConfigPath . 'inshurance_enabled');
         if (!$insuranceConfigFlag) {
             return false;

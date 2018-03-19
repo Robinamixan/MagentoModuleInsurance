@@ -3,12 +3,16 @@
 class Robinam_ShippingInsurance_Model_Sales_Quote_Address_Total_Shippinginsurance extends Mage_Sales_Model_Quote_Address_Total_Abstract
 {
     protected $_code = 'shippinginsurance';
+    protected $insuranceModel;
+
+    public function __construct()
+    {
+        $this->insuranceModel = Mage::getModel('shippinginsurance/shippingInsurance');
+    }
 
     public function collect(Mage_Sales_Model_Quote_Address $address)
     {
         parent::collect($address);
-
-        $insuranceModel = Mage::getModel('shippinginsurance/insurance');
 
         $this->_setAmount(0);
         $this->_setBaseAmount(0);
@@ -20,9 +24,9 @@ class Robinam_ShippingInsurance_Model_Sales_Quote_Address_Total_Shippinginsuranc
 
         $quote = $address->getQuote();
 
-        if ($insuranceModel->canChangeInsuranceAmount($address)) {
+        if ($this->insuranceModel->canChangeInsuranceAmount($address)) {
             $exist_amount = $quote->getShippinginsuranceAmount();
-            $insuranceRate = $insuranceModel->getInsuranceRate($address);
+            $insuranceRate = $this->insuranceModel->getInsuranceRate($address);
             $balance = $insuranceRate - $exist_amount;
             $address->setShippinginsuranceAmount($balance);
             $address->setBaseShippinginsuranceAmount($balance);
@@ -41,6 +45,7 @@ class Robinam_ShippingInsurance_Model_Sales_Quote_Address_Total_Shippinginsuranc
             'code' => $this->getCode(),
             'title' => Mage::helper('shippinginsurance')->__('Shipping Insurance'),
             'value' => $amt,
+            'type' => $this->insuranceModel->getInsuranceType($address)
         ));
 
         return $this;

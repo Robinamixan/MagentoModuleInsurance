@@ -1,6 +1,6 @@
 <?php
 
-class Robinam_ShippingInsurance_Block_Sales_Order_Insurance extends Mage_Core_Block_Template
+class Robinam_ShippingInsurance_Block_Sales_Order_ShippingInsurance extends Mage_Core_Block_Template
 {
     /**
      * Get order store object
@@ -25,7 +25,7 @@ class Robinam_ShippingInsurance_Block_Sales_Order_Insurance extends Mage_Core_Bl
     /**
      * Initialize shippinginsurance totals
      *
-     * @return Robinam_ShippingInsurance_Block_Sales_Order_Insurance
+     * @return Robinam_ShippingInsurance_Block_Sales_Order_ShippingInsurance
      */
     public function initTotals()
     {
