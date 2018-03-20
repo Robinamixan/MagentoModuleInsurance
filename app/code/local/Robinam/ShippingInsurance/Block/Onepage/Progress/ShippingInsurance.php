@@ -2,9 +2,6 @@
 
 class Robinam_ShippingInsurance_Block_Onepage_Progress_ShippingInsurance extends Mage_Checkout_Block_Onepage_Progress
 {
-    const FIXED = 1;
-    const PERCENT = 2;
-
     public function isEnabledInsurance()
     {
         return Mage::getSingleton('core/session')->getInsuranceCheckboxFlag();
@@ -17,10 +14,11 @@ class Robinam_ShippingInsurance_Block_Onepage_Progress_ShippingInsurance extends
 
     public function getInsuranceType()
     {
+        $shippingInsuranceTypesModel = Mage::getModel('shippinginsurance/source_insuranceRateTypes');
         $insuranceType = $this->getQuote()->getTotals()['shippinginsurance']->getType();
-        if (self::FIXED === (int) $insuranceType) {
+        if ($shippingInsuranceTypesModel::FIXED === (int) $insuranceType) {
             return 'Fixed Rate - ';
-        } elseif (self::PERCENT === (int) $insuranceType) {
+        } elseif ($shippingInsuranceTypesModel::PERCENT === (int) $insuranceType) {
             return 'Percent Rate (total price) - ';
         }
         return null;

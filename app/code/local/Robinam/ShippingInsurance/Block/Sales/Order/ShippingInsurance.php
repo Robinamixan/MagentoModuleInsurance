@@ -29,16 +29,15 @@ class Robinam_ShippingInsurance_Block_Sales_Order_ShippingInsurance extends Mage
      */
     public function initTotals()
     {
-        if ((float) $this->getOrder()->getBaseShippinginsuranceAmount()) {
-            $source = $this->getSource();
-            $value = $source->getShippinginsuranceAmount();
+        if ($this->getOrder()->getBaseShippinginsuranceAmount()) {
+            $value = $this->getSource()->getShippinginsuranceAmount();
 
-            $this->getParentBlock()->addTotal(new Varien_Object(array(
+            $this->getParentBlock()->addTotal(new Varien_Object([
                 'code' => 'shippinginsurance',
                 'strong' => false,
                 'label' => Mage::helper('shippinginsurance')->__('Shipping Insurance'),
                 'value' => $value,
-            )));
+            ]));
         }
 
         return $this;

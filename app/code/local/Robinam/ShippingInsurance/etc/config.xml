@@ -1,10 +1,12 @@
 <?xml version="1.0"?>
 <config>
+
     <modules>
         <Robinam_ShippingInsurance>
             <version>1.0.0</version>
         </Robinam_ShippingInsurance>
     </modules>
+
     <global>
 
         <blocks>
@@ -50,6 +52,7 @@
                 </connection>
             </shippinginsurance_setup>
         </resources>
+
         <models>
             <shippinginsurance>
                 <class>Robinam_ShippingInsurance_Model</class>
@@ -70,6 +73,7 @@
     </global>
 
     <frontend>
+
         <layout>
             <updates>
                 <shippinginsurance>
@@ -87,6 +91,7 @@
                 </Robinam_ShippingInsurance>
             </modules>
         </translate>
+
     </frontend>
 
     <admin>
@@ -99,9 +104,9 @@
 
         <layout>
             <updates>
-                <fee>
+                <shippinginsurance>
                     <file>shippinginsurance.xml</file>
-                </fee>
+                </shippinginsurance>
             </updates>
         </layout>
 
@@ -124,5 +129,6 @@
                 </admin>
             </resources>
         </acl>
+
     </adminhtml>
 </config>

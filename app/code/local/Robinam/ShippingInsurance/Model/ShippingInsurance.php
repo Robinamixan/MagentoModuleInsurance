@@ -2,15 +2,19 @@
 
 class Robinam_ShippingInsurance_Model_ShippingInsurance
 {
-    const FIXED = 1;
-    const PERCENT = 2;
+    protected $shippingInsuranceTypesModel;
+
+    public function __construct()
+    {
+        $this->shippingInsuranceTypesModel = Mage::getModel('shippinginsurance/source_insuranceRateTypes');
+    }
 
     /**
      * Retrieve Fee Amount
      *
      * @static
      * @param Mage_Sales_Model_Quote_Address $address
-     * @return int
+     * @return float
      */
     public function getInsuranceRate(Mage_Sales_Model_Quote_Address $address)
     {
@@ -21,13 +25,13 @@ class Robinam_ShippingInsurance_Model_ShippingInsurance
         $insuranceRateTypeConfig = Mage::getStoreConfig($shippingMethodsConfigPath . 'inshurance_type');
         $insuranceRateValueConfig = Mage::getStoreConfig($shippingMethodsConfigPath . 'inshurance_rate');
 
-        if ($insuranceRateTypeConfig === (string)self::FIXED) {
+        if ($insuranceRateTypeConfig === (string)$this->shippingInsuranceTypesModel::FIXED) {
             $insurancePrice = $insuranceRateValueConfig;
         } else {
-            $insurancePrice = $shippingRate * ((float)$insuranceRateValueConfig / 100);
+            $insurancePrice = $shippingRate * ((float) $insuranceRateValueConfig / 100);
         }
 
-        return $insurancePrice;
+        return (float) $insurancePrice;
     }
 
     /**
