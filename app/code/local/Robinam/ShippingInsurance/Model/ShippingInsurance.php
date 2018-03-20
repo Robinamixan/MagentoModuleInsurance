@@ -2,6 +2,7 @@
 
 class Robinam_ShippingInsurance_Model_ShippingInsurance
 {
+    /** @var false|Robinam_ShippingInsurance_Model_Source_InsuranceRateTypes $shippingInsuranceTypesModel */
     protected $shippingInsuranceTypesModel;
 
     public function __construct()

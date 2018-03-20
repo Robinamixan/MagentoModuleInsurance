@@ -3,6 +3,8 @@
 class Robinam_ShippingInsurance_Model_Sales_Quote_Address_Total_Shippinginsurance extends Mage_Sales_Model_Quote_Address_Total_Abstract
 {
     protected $_code = 'shippinginsurance';
+
+    /** @var false|Robinam_ShippingInsurance_Model_ShippingInsurance $insuranceModel */
     protected $insuranceModel;
 
     public function __construct()

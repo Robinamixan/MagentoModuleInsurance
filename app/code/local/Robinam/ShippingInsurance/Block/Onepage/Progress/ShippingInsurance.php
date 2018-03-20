@@ -14,7 +14,9 @@ class Robinam_ShippingInsurance_Block_Onepage_Progress_ShippingInsurance extends
 
     public function getInsuranceType()
     {
+        /** @var false|Robinam_ShippingInsurance_Model_Source_InsuranceRateTypes $shippingInsuranceTypesModel */
         $shippingInsuranceTypesModel = Mage::getModel('shippinginsurance/source_insuranceRateTypes');
+
         $insuranceType = $this->getQuote()->getTotals()['shippinginsurance']->getType();
         if ($shippingInsuranceTypesModel::FIXED === (int) $insuranceType) {
             return 'Fixed Rate - ';
