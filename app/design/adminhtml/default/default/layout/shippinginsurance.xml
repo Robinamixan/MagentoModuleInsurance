@@ -6,7 +6,7 @@
             <block type="adminhtml/sales_order_totals_item" name="shippinginsurance" template="shippinginsurance/sales/order/total.phtml" />
             <block type="adminhtml/sales_order_totals_item" name="shippinginsurance.refunded" template="shippinginsurance/sales/order/refunded.phtml">
                 <action method="setDisplayArea"><area>footer</area></action>
-                <action method="setAfterCondition"><condition>last</condition></action>
+                <action method="setBeforeCondition"><condition>first</condition></action>
             </block>
         </reference>
     </adminhtml_sales_order_view>
