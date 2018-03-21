@@ -22,6 +22,7 @@
         </helpers>
 
         <sales>
+
             <quote>
                 <totals>
                     <shippinginsurance>
@@ -29,6 +30,23 @@
                     </shippinginsurance>
                 </totals>
             </quote>
+
+            <order_invoice>
+                <totals>
+                    <shippinginsurance>
+                        <class>shippinginsurance/sales_order_total_invoice_shippinginsurance</class>
+                    </shippinginsurance>
+                </totals>
+            </order_invoice>
+
+            <order_creditmemo>
+                <totals>
+                    <shippinginsurance>
+                        <class>shippinginsurance/sales_order_total_creditmemo_shippinginsurance</class>
+                    </shippinginsurance>
+                </totals>
+            </order_creditmemo>
+
         </sales>
 
         <fieldsets>
@@ -60,6 +78,7 @@
         </models>
 
         <events>
+
             <controller_action_predispatch_checkout_onepage_saveShippingMethod><!-- observe the event -->
                 <observers>
                     <shippinginsurance>
@@ -68,11 +87,40 @@
                     </shippinginsurance>
                 </observers>
             </controller_action_predispatch_checkout_onepage_saveShippingMethod>
+
+            <sales_order_invoice_save_after>
+                <observers>
+                    <sales_order_invoice_save_after>
+                        <class>shippinginsurance/observer</class>
+                        <method>invoiceSaveAfter</method>
+                    </sales_order_invoice_save_after>
+                </observers>
+            </sales_order_invoice_save_after>
+
+            <sales_order_creditmemo_save_after>
+                <observers>
+                    <sales_order_creditmemo_save_after>
+                        <class>shippinginsurance/observer</class>
+                        <method>creditmemoSaveAfter</method>
+                    </sales_order_creditmemo_save_after>
+                </observers>
+            </sales_order_creditmemo_save_after>
+
         </events>
 
     </global>
 
     <frontend>
+
+        <routers>
+            <shippinginsurance>
+                <use>standard</use>
+                <args>
+                    <module>Robinam_ShippingInsurance</module>
+                    <frontName>shippinginsurance</frontName>
+                </args>
+            </shippinginsurance>
+        </routers>
 
         <layout>
             <updates>

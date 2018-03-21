@@ -1,4 +1,65 @@
-<input name="shipping_insurance" type="checkbox" id="s_method_insurance" class="checkbox"/>
-<label for="s_method_insurance">
-    <?php echo $this->__('Include Insurance');?>
-</label>
+<div id="shipping_insurance_panel" class="hidden">
+    <input name="shipping_insurance" type="checkbox" id="s_method_insurance" class="checkbox"/>
+    <label for="s_method_insurance">
+        <?php echo $this->__('Include Insurance');?>
+    </label>
+    <strong>
+        <span> Insurance Price - </span>
+        <div id="result_insurance" style="display: inline-block"></div>
+    </strong>
+</div>
+
+<script>
+    var subtotal = <?php echo $this->getAddress()->getTotals()['subtotal']->getValue();?>;
+    var insurance_ajax_url = '<?php echo $this->getUrl('shippinginsurance/index/ajax');?>';
+
+    $$('#s_method_insurance').each(function(el){
+        Event.observe(el, 'click', function(){
+            if (el.checked === true) {
+                var code = 0;
+                $('shipping_insurance_panel').removeClassName('hidden');
+
+
+                $$('input[type="radio"][name="shipping_method"]').each(function(el){
+                    if (el.checked === true) {
+                        code = el.getValue();
+                        return false;
+                    }
+                });
+
+                new Ajax.Request(insurance_ajax_url, {
+                    parameters: {shipping_code: code, subtotal: subtotal},
+                    onSuccess: function(transport, json){
+                        $("result_insurance").update(transport.responseJSON.outputValue);
+                    }
+                });
+
+                return false;
+            } else {
+                $('result_insurance').update('');
+                $('shipping_insurance_panel').addClassName('hidden');
+            }
+        });
+    });
+
+    $$('input[type="radio"][name="shipping_method"]').each(function(el){
+        Event.observe(el, 'click', function(){
+            if (el.checked === true) {
+                $$('#s_method_insurance').each(function(el2){
+                    if (el2.checked === true) {
+                        new Ajax.Request(insurance_ajax_url, {
+                            parameters: {shipping_code: el.getValue(), subtotal: subtotal},
+                            onSuccess: function(transport, json){
+                                $('result_insurance').update(transport.responseJSON.outputValue);
+                            }
+                        });
+
+                        return false;
+                    }
+                });
+
+                return false;
+            }
+        });
+    });
+</script>

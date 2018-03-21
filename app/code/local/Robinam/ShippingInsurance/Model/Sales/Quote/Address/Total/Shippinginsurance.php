@@ -24,8 +24,12 @@ class Robinam_ShippingInsurance_Model_Sales_Quote_Address_Total_Shippinginsuranc
             return $this; //this makes only address type shipping to come through
         }
 
+        $quote = $address->getQuote();
         if ($this->insuranceModel->canChangeInsuranceAmount($address)) {
-            $balance = $this->insuranceModel->getInsuranceRate($address);
+            $exist_amount = $quote->getShippinginsuranceAmount();
+            $insuranceRate = $this->insuranceModel->getInsuranceRate($address);
+            $balance = $insuranceRate - $exist_amount;
+
             $this->setShippinginsuranceAmount($address, $balance);
         }
     }
@@ -38,7 +42,7 @@ class Robinam_ShippingInsurance_Model_Sales_Quote_Address_Total_Shippinginsuranc
                 'code' => $this->getCode(),
                 'title' => Mage::helper('shippinginsurance')->__('Shipping Insurance'),
                 'value' => $amt,
-                'type' => $this->insuranceModel->getInsuranceType($address),
+                'type' => $this->insuranceModel->getInsuranceRateType($address),
             ]);
         }
 

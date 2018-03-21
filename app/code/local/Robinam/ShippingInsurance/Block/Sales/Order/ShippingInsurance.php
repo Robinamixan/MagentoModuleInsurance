@@ -25,7 +25,7 @@ class Robinam_ShippingInsurance_Block_Sales_Order_ShippingInsurance extends Mage
     /**
      * Initialize shippinginsurance totals
      *
-     * @return Robinam_ShippingInsurance_Block_Sales_Order_ShippingInsurance
+     * @return Robinam_ShippingInsurance_Block_Sales_Order_Shippinginsurance
      */
     public function initTotals()
     {

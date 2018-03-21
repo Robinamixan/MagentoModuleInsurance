@@ -19,30 +19,51 @@ class Robinam_ShippingInsurance_Model_ShippingInsurance
      */
     public function getInsuranceRate(Mage_Sales_Model_Quote_Address $address)
     {
-        $shippingRate = $address->getQuote()->getTotals()['subtotal']->getValue();
+        $subtotal = $address->getQuote()->getTotals()['subtotal']->getValue();
 
-        $shippingMethodsConfigPath = $shippingMethodsConfigPath = $this->getInsuranceConfigPath($address);
+        $shippingMethodsConfigPath = $this->getInsuranceConfigPath($address);
 
-        $insuranceRateTypeConfig = Mage::getStoreConfig($shippingMethodsConfigPath . 'inshurance_type');
-        $insuranceRateValueConfig = Mage::getStoreConfig($shippingMethodsConfigPath . 'inshurance_rate');
+        $insuranceRateTypeConfig = $this->getInsuranceRateTypeByConfigPath($shippingMethodsConfigPath);
+        $insuranceRateValueConfig = $this->getInsuranceRateValueByConfigPath($shippingMethodsConfigPath);
 
-        if ($insuranceRateTypeConfig === (string)$this->shippingInsuranceTypesModel::FIXED) {
-            $insurancePrice = $insuranceRateValueConfig;
+        return (float) $this->getInsurancePrice($insuranceRateTypeConfig, $insuranceRateValueConfig, $subtotal);
+    }
+
+    public function getInsurancePrice($insuranceRateType, $insuranceRateValue, $subtotal)
+    {
+        if ($insuranceRateType === (string)$this->shippingInsuranceTypesModel::FIXED) {
+            return $insuranceRateValue;
         } else {
-            $insurancePrice = $shippingRate * ((float) $insuranceRateValueConfig / 100);
+            return $subtotal * ((float) $insuranceRateValue / 100);
         }
-
-        return (float) $insurancePrice;
     }
 
     /**
      * @param Mage_Sales_Model_Quote_Address $address
      * @return mixed
      */
-    public function getInsuranceType(Mage_Sales_Model_Quote_Address $address)
+    public function getInsuranceRateType(Mage_Sales_Model_Quote_Address $address)
     {
         $shippingMethodsConfigPath = $this->getInsuranceConfigPath($address);
         return Mage::getStoreConfig($shippingMethodsConfigPath . 'inshurance_type');
+    }
+
+    /**
+     * @param $shippingMethodsConfigPath
+     * @return mixed
+     */
+    public function getInsuranceRateTypeByConfigPath($shippingMethodsConfigPath)
+    {
+        return Mage::getStoreConfig($shippingMethodsConfigPath . 'inshurance_type');
+    }
+
+    /**
+     * @param $shippingMethodsConfigPath
+     * @return mixed
+     */
+    public function getInsuranceRateValueByConfigPath($shippingMethodsConfigPath)
+    {
+        return Mage::getStoreConfig($shippingMethodsConfigPath . 'inshurance_rate');
     }
 
     /**

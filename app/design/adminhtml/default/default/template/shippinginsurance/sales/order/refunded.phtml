@@ -1,0 +1,20 @@
+<?php if($this->getSource() instanceof Mage_Sales_Model_Order): ?>
+
+    <?php if ((float)$this->getSource()->getShippinginsuranceAmountRefunded() > 0): ?>
+        <tr>
+            <td class="label"><strong><?php echo Mage::helper('shippinginsurance')->__('Shipping Insurance refunded to customer') ?></strong></td>
+            <td><strong><?php echo $this->getSource()->getShippinginsuranceAmountRefunded(); ?></strong></td>
+        </tr>
+    <?php endif; ?>
+
+<?php else: ?>
+
+    <?php if ((float)$this->getSource()->getShippinginsuranceAmount()): ?>
+        <tr>
+            <td class="label"><?php echo Mage::helper('shippinginsurance')->__('Shipping Insurance') ?></td>
+            <td><?php echo $this->getSource()->getShippinginsuranceAmount(); ?></td>
+        </tr>
+    <?php endif;  ?>
+
+<?php endif; ?>
+
