@@ -35,6 +35,7 @@ ShippingInsurance.prototype = {
             Event.observe(el, 'click', function(){
                 if (el.checked === true) {
                     var code = el.getValue();
+
                     $$('#s_method_insurance').each(function(el2){
                         if (el2.checked === true) {
 

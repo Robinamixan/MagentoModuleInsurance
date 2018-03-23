@@ -31,7 +31,7 @@ class Robinam_ShippingInsurance_Model_ShippingInsurance
 
     public function getInsurancePrice($insuranceRateType, $insuranceRateValue, $subtotal)
     {
-        if ($insuranceRateType === (string)$this->shippingInsuranceTypesModel::FIXED) {
+        if ($insuranceRateType === (string) $this->shippingInsuranceTypesModel::FIXED) {
             return $insuranceRateValue;
         } else {
             return $subtotal * ((float) $insuranceRateValue / 100);
@@ -45,6 +45,7 @@ class Robinam_ShippingInsurance_Model_ShippingInsurance
     public function getInsuranceRateType(Mage_Sales_Model_Quote_Address $address)
     {
         $shippingMethodsConfigPath = $this->getInsuranceConfigPath($address);
+
         return Mage::getStoreConfig($shippingMethodsConfigPath . 'inshurance_type');
     }
 
@@ -74,6 +75,7 @@ class Robinam_ShippingInsurance_Model_ShippingInsurance
     {
         $shippingMethod = $address->getShippingMethod();
         $shippingMethodCode = explode('_', $shippingMethod);
+
         return 'shippinginsurance/' . $shippingMethodCode[0] . '_insurance/';
     }
 

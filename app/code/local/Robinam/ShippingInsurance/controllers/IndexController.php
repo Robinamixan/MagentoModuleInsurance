@@ -12,13 +12,14 @@ class Robinam_ShippingInsurance_IndexController extends Mage_Core_Controller_Fro
         $shippingMethodCode = explode('_', $request->getPost('shipping_code', ''));
         $subtotal = $request->getPost('subtotal', '');
 
-        $shippingMethodsConfigPath = 'shippinginsurance/' . $shippingMethodCode[0] . '_insurance/';
+        $shippingMethodsConfigPath = sprintf('shippinginsurance/%s_insurance/', $shippingMethodCode[0]);
         $insuranceRateTypeConfig = $insuranceModel->getInsuranceRateTypeByConfigPath($shippingMethodsConfigPath);
         $insuranceRateValueConfig = $insuranceModel->getInsuranceRateValueByConfigPath($shippingMethodsConfigPath);
 
         $insurancePrice = $insuranceModel->getInsurancePrice($insuranceRateTypeConfig, $insuranceRateValueConfig, $subtotal);
 
         $isAjax = $request->isAjax();
+
         if ($isAjax) {
             $this->getResponse()->setHeader('Content-type', 'application/json');
             $this->getResponse()->setBody(Mage::helper('core')->jsonEncode(['outputValue' => $insurancePrice]));
