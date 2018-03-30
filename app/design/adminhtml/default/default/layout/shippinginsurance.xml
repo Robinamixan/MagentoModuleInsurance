@@ -1,8 +1,13 @@
 <?xml version="1.0"?>
 <layout version="1.0.0">
+
     <adminhtml_sales_order_view>
         <reference name="order_totals">
             <block type="adminhtml/sales_order_totals_item" name="shippinginsurance" template="shippinginsurance/sales/order/total.phtml" />
+            <block type="adminhtml/sales_order_totals_item" name="shippinginsurance.refunded" template="shippinginsurance/sales/order/refunded.phtml">
+                <action method="setDisplayArea"><area>footer</area></action>
+                <action method="setBeforeCondition"><condition>first</condition></action>
+            </block>
         </reference>
     </adminhtml_sales_order_view>
 
@@ -35,4 +40,13 @@
             <block type="adminhtml/sales_order_totals_item" name="shippinginsurance" template="shippinginsurance/sales/order/total.phtml" />
         </reference>
     </adminhtml_sales_order_creditmemo_updateqty>
+
+    <adminhtml_sales_order_creditmemo_view>
+        <reference name="creditmemo_totals">
+            <block type="adminhtml/sales_order_totals_item" name="shippinginsurance.refunded" template="shippinginsurance/sales/order/refunded.phtml">
+                <action method="setDisplayArea"><area>footer</area></action>
+            </block>
+        </reference>
+    </adminhtml_sales_order_creditmemo_view>
+
 </layout>

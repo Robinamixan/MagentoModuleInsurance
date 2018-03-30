@@ -1,6 +1,6 @@
 <?php
 
-class Robinam_ShippingInsurance_Block_Sales_Order_Insurance extends Mage_Core_Block_Template
+class Robinam_ShippingInsurance_Block_Sales_Order_ShippingInsurance extends Mage_Core_Block_Template
 {
     /**
      * Get order store object
@@ -25,20 +25,19 @@ class Robinam_ShippingInsurance_Block_Sales_Order_Insurance extends Mage_Core_Bl
     /**
      * Initialize shippinginsurance totals
      *
-     * @return Robinam_ShippingInsurance_Block_Sales_Order_Insurance
+     * @return Robinam_ShippingInsurance_Block_Sales_Order_Shippinginsurance
      */
     public function initTotals()
     {
-        if ((float) $this->getOrder()->getBaseShippinginsuranceAmount()) {
-            $source = $this->getSource();
-            $value = $source->getShippinginsuranceAmount();
+        if ($this->getOrder()->getBaseShippinginsuranceAmount()) {
+            $value = $this->getSource()->getShippinginsuranceAmount();
 
-            $this->getParentBlock()->addTotal(new Varien_Object(array(
+            $this->getParentBlock()->addTotal(new Varien_Object([
                 'code' => 'shippinginsurance',
                 'strong' => false,
                 'label' => Mage::helper('shippinginsurance')->__('Shipping Insurance'),
                 'value' => $value,
-            )));
+            ]));
         }
 
         return $this;

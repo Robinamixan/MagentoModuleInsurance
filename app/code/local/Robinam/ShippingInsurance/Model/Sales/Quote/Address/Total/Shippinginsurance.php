@@ -4,11 +4,17 @@ class Robinam_ShippingInsurance_Model_Sales_Quote_Address_Total_Shippinginsuranc
 {
     protected $_code = 'shippinginsurance';
 
+    /** @var false|Robinam_ShippingInsurance_Model_ShippingInsurance $insuranceModel */
+    protected $insuranceModel;
+
+    public function __construct()
+    {
+        $this->insuranceModel = Mage::getModel('shippinginsurance/shippingInsurance');
+    }
+
     public function collect(Mage_Sales_Model_Quote_Address $address)
     {
         parent::collect($address);
-
-        $insuranceModel = Mage::getModel('shippinginsurance/insurance');
 
         $this->_setAmount(0);
         $this->_setBaseAmount(0);
@@ -19,30 +25,39 @@ class Robinam_ShippingInsurance_Model_Sales_Quote_Address_Total_Shippinginsuranc
         }
 
         $quote = $address->getQuote();
-
-        if ($insuranceModel->canChangeInsuranceAmount($address)) {
+        if ($this->insuranceModel->canChangeInsuranceAmount($address)) {
             $exist_amount = $quote->getShippinginsuranceAmount();
-            $insuranceRate = $insuranceModel->getInsuranceRate($address);
+            $insuranceRate = $this->insuranceModel->getInsuranceRate($address);
             $balance = $insuranceRate - $exist_amount;
-            $address->setShippinginsuranceAmount($balance);
-            $address->setBaseShippinginsuranceAmount($balance);
 
-            $quote->setShippinginsuranceAmount($balance);
-
-            $address->setGrandTotal($address->getGrandTotal() + $address->getShippinginsuranceAmount());
-            $address->setBaseGrandTotal($address->getBaseGrandTotal() + $address->getBaseShippinginsuranceAmount());
+            $this->setShippinginsuranceAmount($address, $balance);
         }
     }
 
     public function fetch(Mage_Sales_Model_Quote_Address $address)
     {
         $amt = $address->getShippinginsuranceAmount();
-        $address->addTotal(array(
-            'code' => $this->getCode(),
-            'title' => Mage::helper('shippinginsurance')->__('Shipping Insurance'),
-            'value' => $amt,
-        ));
+        if (!empty($amt)) {
+            $address->addTotal([
+                'code' => $this->getCode(),
+                'title' => Mage::helper('shippinginsurance')->__('Shipping Insurance'),
+                'value' => $amt,
+                'type' => $this->insuranceModel->getInsuranceRateType($address),
+            ]);
+        }
 
         return $this;
+    }
+
+    protected function setShippinginsuranceAmount(Mage_Sales_Model_Quote_Address $address, float $balance)
+    {
+        $quote = $address->getQuote();
+        $address->setShippinginsuranceAmount($balance);
+        $address->setBaseShippinginsuranceAmount($balance);
+
+        $quote->setShippinginsuranceAmount($balance);
+
+        $address->setGrandTotal($address->getGrandTotal() + $balance);
+        $address->setBaseGrandTotal($address->getBaseGrandTotal() + $balance);
     }
 }

@@ -2,3 +2,15 @@
 <label for="s_method_insurance">
     <?php echo $this->__('Include Insurance');?>
 </label>
+<div id="shipping_insurance_panel" class="hidden">
+    <strong>
+        <span> Insurance Price - </span>
+        <div id="result_insurance" style="display: inline-block"></div>
+    </strong>
+</div>
+
+<script>
+    var subtotal = <?php echo $this->getAddress()->getTotals()['subtotal']->getValue();?>;
+    var insurance_ajax_url = '<?php echo $this->getUrl('shippinginsurance/index/ajax');?>';
+    var d = new ShippingInsurance(subtotal, insurance_ajax_url);
+</script>
